@@ -2,6 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
-body::-webkit-scrollbar{
-    display: none;
+body::-webkit-scrollbar {
+	display: none;
+}
+
+button{
+	transition: transform .2s ease-in-out ;
+	&:hover{
+		transform : translateY(-4px);
+	}
+}
+
+.spacing{
+	@apply px-12 sm:px-20 md:px-28 lg:px-40;
 }

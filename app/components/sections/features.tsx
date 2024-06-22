@@ -35,8 +35,8 @@ function Features(): React.ReactElement {
 	];
 
 	return (
-		<section className="flex w-full justify-center">
-			<div className="py-12 px-40 border flex gap-6 flex-col items-center container">
+		<section className="flex w-full justify-center grow ">
+			<div className="py-12 spacing flex gap-6 flex-col items-center container">
 				<Image
 					src="features/harbour_lights.svg"
 					alt="harbour lights"
@@ -52,52 +52,76 @@ function Features(): React.ReactElement {
 				</span>
 				<p className={poppins400.className + " text-center text-black text-sm"}>
 					Harbour Lights beautifully honours maritime voyages while embracing an
-					opulent seafront<br></br>lifestyle. Its maritime-inspired amenities provide
-					an unmatched seaside experience, offering a<br></br>life of tranquility and
+					opulent seafront<br className="hidden lg:inline"></br>lifestyle. Its
+					maritime-inspired amenities provide an unmatched seaside experience,
+					offering a<br className="hidden lg:inline"></br>life of tranquility and
 					bliss.
 				</p>
 
-				<div className="flex self-stretch justify-between">
+				<div className="lg:flex self-stretch justify-between grid grid-cols-2 grid-rows-2 gap-4">
 					{screenshots.map((item, index) => (
 						<FeatureScreenShot {...item} key={index} />
 					))}
 				</div>
-				<p className="text-[9px] mb-2 self-end text-[#686868]">
+				<p className="text-[9px] mb-2 self-center lg:self-end text-[#686868]">
 					*T&Cs apply | ** Based on similar branded projects in the last 2 years.{" "}
 					<u className="cursor-pointer ">Source 1</u> |{" "}
 					<u className="cursor-pointer ">Source 2</u>
 				</p>
-                <div className="self-end flex gap-2 ">
-                    <button className={poppins600.className + " uppercase text-xs px-10 py-3 bg-darkBlue rounded-md text-white"}>
-                        Exteroirs
-                    </button>
-                    <button className={poppins600.className + " uppercase text-xs px-10 py-3 border-darkBlue border-[1px] rounded-md bg-white text-darkBlue"}>
-                        interiors
-                    </button>
-                </div>
-                <Gallery />
+				<div className="self-center lg:self-end flex gap-2 ">
+					<button
+						className={
+							poppins600.className +
+							" uppercase text-xs px-10 py-3 bg-darkBlue rounded-md text-white"
+						}
+					>
+						Exteroirs
+					</button>
+					<button
+						className={
+							poppins600.className +
+							" uppercase text-xs px-10 py-3 border-darkBlue border-[1px] rounded-md bg-white text-darkBlue"
+						}
+					>
+						interiors
+					</button>
+				</div>
+				<Gallery />
 			</div>
 		</section>
 	);
 }
 
-function Gallery() : React.ReactElement{ 
-    return <div className="w-full">
-        <img src="/gallery/main.jpg" alt="hotel view" className="w-full rounded-xl"/>
-        <div className="grid grid-cols-4 mt-4 gap-4">
-            <img src="/gallery/small1.jpg"/>
-            <img src="/gallery/small2.jpg"/>
-            <img src="/gallery/small3.jpg"/>
-            <img src="/gallery/small4.jpg"/>
-        </div>
-    </div>
+// 1122 -> 561
+// 494 -> 248
+
+/* @Resuable component */
+function Gallery(): React.ReactElement {
+	return (
+		<div className="w-full">
+			<Image
+				src="/gallery/main.jpg"
+				alt="hotel view"
+				className="w-full rounded-xl"
+				width={1122}
+				height={494}
+			/>
+			<div className="grid grid-cols-4 mt-4 gap-5">
+				<Image src="/gallery/small1.jpg" alt="hotels" width={270} height={168} />
+				<Image src="/gallery/small2.jpg" alt="hotels" width={270} height={168} />
+				<Image src="/gallery/small3.jpg" alt="hotels" width={270} height={168} />
+				<Image src="/gallery/small4.jpg" alt="hotels" width={270} height={168} />
+			</div>
+		</div>
+	);
 }
 
+/* @Resuable component */
 function FeatureScreenShot({
 	image,
 	text1,
 	text2,
-}: screenshot): React.ReactElement {
+}: screenshot): React.ReactElement<screenshot> {
 	return (
 		<div
 			className={
